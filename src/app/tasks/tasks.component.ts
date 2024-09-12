@@ -8,6 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class TasksComponent implements OnInit {
   @Input() userId: string | undefined ;
   @Input() name?: string | null;
+  isAddingTask=false;
 
   tasks = [
     {
@@ -37,6 +38,17 @@ export class TasksComponent implements OnInit {
   get selectedUserTasks() {
     console.log('Filtering tasks for userId:', this.userId);  // For debugging
     return this.tasks.filter(task => task.userId === this.userId);
+  }
+  onConpleteTask(id:string){
+    //..
+    this.tasks=this.tasks.filter((task)=>task.id !==id);
+  }
+  onStartAddTask(){
+    this.isAddingTask=true;
+  }
+
+  onCancelAddTask(){
+    this.isAddingTask=false;
   }
 
   constructor() {}

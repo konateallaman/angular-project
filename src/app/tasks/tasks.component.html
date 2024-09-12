@@ -1,20 +1,23 @@
+<div *ngIf="isAddingTask">
+    <app-new-task (cancel)="onCancelAddTask()"></app-new-task>
+  </div>
 <section id="tasks">
     <header >
         <h2>{{name}}</h2>
         <menu>
-            <button>Add Task</button>
+            <button (click)="onStartAddTask()">Add Task</button>
         </menu>
     </header>
     <ul *ngIf="selectedUserTasks.length > 0; else noTasks">
         <li *ngFor="let task of selectedUserTasks; else notask">
-            <app-task [task]="task"></app-task>
+            <app-task [task]="task" (complete)="onConpleteTask($event)"></app-task>
         </li>
         <ng-template #notask>
             <p ><strong style="color: lightyellow;"> No task for the current user!</strong></p>
           </ng-template>
     </ul>
     <ng-template #noTasks>
-        <p>No tasks available for {{name}}.</p>
+        <p>No tasks available for <strong style="color: rgb(13, 239, 69);">{{name}}</strong> .</p>
       </ng-template>
 </section>
 

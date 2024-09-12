@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output,EventEmitter } from '@angular/core';
 import { type Task } from './task.model';
+
 
 
 
@@ -10,6 +11,10 @@ import { type Task } from './task.model';
 })
 export class TaskComponent implements OnInit {
   @Input() task!: Task;
+  @Output() complete=new EventEmitter<string>();
+  onCompleteTask(){
+    this.complete.emit(this.task.id);
+  }
 
   constructor() {}
 
