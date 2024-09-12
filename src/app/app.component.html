@@ -6,5 +6,8 @@
     </li>
     
   </ul>
-  <app-tasks [name]="selectedUser.name"> </app-tasks>
+  <app-tasks *ngIf="selectedUser; else noUser" [name]="selectedUser.name" [userId]="selectedUser.id"> </app-tasks>
+  <ng-template #noUser>
+    <p >No user selected.<strong style="color: lightyellow;"> Please select a User to see their tasks!</strong></p>
+  </ng-template>
 </main>
