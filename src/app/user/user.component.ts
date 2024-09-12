@@ -12,6 +12,7 @@ import { type User } from './user.model';
 })
 export class UserComponent implements OnInit {
   @Input() user!:User;
+  @Input() selected!:boolean;
   // @Input() id!: string;
   // @Input() avatar!: string;
   // @Input() name!: string;
